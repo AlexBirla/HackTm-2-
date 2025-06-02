@@ -19,7 +19,7 @@
           "options": {
             "outputPath": "dist/frontend",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -40,20 +40,34 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2MB",
-                  "maximumError": "3MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "20kB",
-                  "maximumError": "40kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
+             "fileReplacements": [
+               {
+                 "replace": "src/environments/environments.ts",
+                 "with": "src/environments/environments.prod.ts"
+               }
+             ],
+             "budgets": [
+               {
+                 "type": "initial",
+                 "maximumWarning": "2MB",
+                 "maximumError": "3MB"
+               },
+               {
+                 "type": "anyComponentStyle",
+                 "maximumWarning": "20kB",
+                 "maximumError": "40kB"
+               }
+             ],
+             "optimization": true,
+             "outputHashing": "all",
+             "sourceMap": false,
+             "extractCss": true,
+             "namedChunks": false,
+             "aot": true,
+             "extractLicenses": true,
+             "vendorChunk": false,
+             "buildOptimizer": true
+           },
             "development": {
               "optimization": false,
               "extractLicenses": false,
